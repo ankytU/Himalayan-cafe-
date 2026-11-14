@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Himalayan Cafe – Nepali Food in Kathmandu</title>
+<meta name="description" content="Himalayan Cafe serves fresh momo, thukpa, dal bhat and masala chiya in Thamel, Kathmandu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=Mukta:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#16253a; --night-2:#213552; --saffron:#e8a33d; --flag:#b8392f;
+  --snow:#f6f8fa; --stone:#5c6877; --line:#dfe5ea; --text:#18222f;
+  --head:'Fraunces',Georgia,serif; --body:'Mukta',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:68px}
+body{font-family:var(--body);font-size:1.0625rem;line-height:1.65;color:var(--text);background:var(--snow)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+section{padding:4rem 0}
+h1,h2,h3{font-family:var(--head);color:var(--night);line-height:1.15}
+h2{font-size:clamp(2rem,5.5vw,2.8rem);margin-bottom:.6rem}
+.lead{color:var(--stone);max-width:56ch;margin-bottom:2rem}
+.svg-defs{position:absolute;width:0;height:0}
+
+/* Header */
+header{position:sticky;top:0;z-index:30;background:var(--night);color:#fff}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--head);font-weight:800;font-size:1.35rem;text-decoration:none;color:#fff}
+.logo b{color:var(--saffron)}
+nav ul{display:flex;gap:1.75rem;list-style:none}
+nav a{text-decoration:none;font-weight:600}
+nav a:hover{color:var(--saffron)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.9rem;cursor:pointer;padding:.25rem .5rem}
+@media(max-width:720px){
+  .burger{display:block}
+  nav{position:absolute;left:0;right:0;top:64px;background:var(--night-2);display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:0}
+  nav a{display:block;padding:1rem 1.25rem;border-top:1px solid rgba(255,255,255,.1)}
+}
+
+/* Hero */
+.hero{position:relative;background:linear-gradient(#16253a 0%,#2b4468 70%,#e9b36a 100%);color:#fff;overflow:hidden}
+.hero .wrap{padding:3.5rem 0 11rem;position:relative;z-index:2}
+.hero h1{color:#fff;font-weight:800;font-size:clamp(2.8rem,10vw,5.2rem)}
+.hero p{max-width:44ch;margin:1rem 0 1.75rem;font-size:1.2rem;color:#dbe4ef}
+.hero svg.mount{position:absolute;left:0;bottom:0;width:100%;height:auto;display:block}
+.flags{display:flex;margin-bottom:1.25rem;width:max-content;border-radius:4px;overflow:hidden}
+.flags i{width:2rem;height:1.1rem}
+.btn{display:inline-block;padding:.85rem 1.6rem;border-radius:10px;border:2px solid var(--saffron);background:var(--saffron);color:var(--night);font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+.btn:hover{background:#f2b550}
+.btn.ghost{background:transparent;color:#fff;border-color:#fff}
+.btn.ghost:hover{background:rgba(255,255,255,.14)}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+
+/* Menu */
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.75rem}
+.tab{border:2px solid var(--night);background:transparent;color:var(--night);border-radius:99px;padding:.4rem 1.15rem;font:inherit;font-weight:600;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--night);color:#fff}
+.grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.pic{height:150px;display:grid;place-items:center}
+.pic svg{width:110px;height:110px}
+.info{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.4rem;flex:1}
+.row{display:flex;justify-content:space-between;gap:.75rem;align-items:baseline}
+.info h3{font-size:1.2rem}
+.price{font-weight:600;color:var(--flag);white-space:nowrap}
+.info p{color:var(--stone);font-size:.95rem;line-height:1.45;flex:1}
+.order{align-self:flex-start;margin-top:.4rem;background:none;border:2px solid var(--night);color:var(--night);border-radius:8px;padding:.3rem .9rem;font:inherit;font-weight:600;cursor:pointer}
+.order:hover{background:var(--night);color:#fff}
+
+/* About */
+.about{background:#fff;border-block:1px solid var(--line)}
+.split{display:grid;gap:2.5rem}
+@media(min-width:820px){.split{grid-template-columns:1.1fr 1fr;align-items:center}}
+.about p{margin-bottom:1rem;max-width:58ch}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;text-align:center}
+.stats div{background:var(--snow);border-radius:14px;padding:1.25rem .5rem}
+.stats strong{display:block;font-family:var(--head);font-size:2rem;color:var(--flag)}
+.stats span{color:var(--stone);font-size:.95rem}
+
+/* Contact */
+dl{display:grid;gap:1rem}
+dt{font-weight:600;color:var(--night)}
+dd a{color:var(--flag)}
+.hours{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.5rem}
+.hours h3{margin-bottom:.75rem}
+.hours li{display:flex;justify-content:space-between;gap:1rem;list-style:none;padding:.5rem 0;border-bottom:1px solid var(--line)}
+.hours li:last-child{border:0}
+
+footer{background:var(--night);color:#b5c1d1;text-align:center;padding:1.75rem 0 5.5rem;font-size:.95rem}
+
+/* Floating WhatsApp */
+.wa{position:fixed;right:1rem;bottom:1rem;z-index:40;display:flex;align-items:center;gap:.55rem;background:#25d366;color:#08331a;font-weight:600;text-decoration:none;padding:.75rem 1.2rem .75rem .9rem;border-radius:99px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.wa:hover{background:#3be07b}
+.wa svg{width:1.7rem;height:1.7rem}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- खानाका चित्रहरू (SVG) -->
+<svg class="svg-defs" aria-hidden="true">
+  <symbol id="i-momo" viewBox="0 0 100 100">
+    <ellipse cx="50" cy="78" rx="40" ry="8" fill="#0002"/>
+    <path d="M10 68 Q50 4 90 68 Q50 84 10 68Z" fill="#f6e6c6"/>
+    <path d="M30 40 L35 62 M42 30 L46 66 M54 28 L55 68 M66 32 L64 66 M77 44 L72 62" stroke="#d6b97f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-bowl" viewBox="0 0 100 100">
+    <path d="M32 24 Q28 32 33 38 M50 18 Q46 28 51 36 M68 24 Q64 32 69 38" stroke="#fff9" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M10 48 H90 Q88 84 50 86 Q12 84 10 48Z" fill="#b8392f"/>
+    <ellipse cx="50" cy="48" rx="40" ry="9" fill="#e8a33d"/>
+    <path d="M26 48 q6 -6 12 0 t12 0 t12 0 t12 0" stroke="#fff3d6" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="40" cy="46" r="3" fill="#7a9a3a"/><circle cx="62" cy="50" r="3" fill="#b8392f"/>
+  </symbol>
+  <symbol id="i-plate" viewBox="0 0 100 100">
+    <circle cx="50" cy="52" r="42" fill="#fff"/><circle cx="50" cy="52" r="34" fill="#e7edf2"/>
+    <path d="M24 62 Q36 30 52 52 Q56 66 24 62Z" fill="#fff" stroke="#d9dfe5" stroke-width="2"/>
+    <circle cx="68" cy="38" r="12" fill="#e8a33d"/><circle cx="68" cy="38" r="8" fill="#f3c25c"/>
+    <path d="M60 64 q8 -8 16 0 q-4 12 -16 0Z" fill="#5b8a3c"/>
+    <circle cx="52" cy="76" r="5" fill="#b8392f"/>
+  </symbol>
+  <symbol id="i-cup" viewBox="0 0 100 100">
+    <path d="M36 22 Q32 30 37 36 M52 16 Q48 26 53 34 M68 22 Q64 30 69 36" stroke="#fff9" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M20 44 H74 V62 Q74 86 47 86 Q20 86 20 62Z" fill="#fff"/>
+    <ellipse cx="47" cy="44" rx="27" ry="6" fill="#b9793b"/>
+    <path d="M74 50 Q94 50 88 66 Q84 74 72 72" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-glass" viewBox="0 0 100 100">
+    <path d="M30 20 H70 L64 88 H36Z" fill="#fff6e2"/>
+    <path d="M30 20 H70 L69 32 H31Z" fill="#fff"/>
+    <path d="M33 50 H67" stroke="#f0dcae" stroke-width="3"/>
+    <path d="M58 20 L66 6" stroke="#b8392f" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-ring" viewBox="0 0 100 100">
+    <path fill-rule="evenodd" d="M50 16a36 36 0 1 0 0 72a36 36 0 1 0 0-72zM50 40a12 12 0 1 1 0 24a12 12 0 1 1 0-24z" fill="#d98a2b"/>
+    <path d="M26 34 Q38 22 54 22" stroke="#f0b45a" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-noodle" viewBox="0 0 100 100">
+    <path d="M10 52 H90 Q86 86 50 86 Q14 86 10 52Z" fill="#fff"/>
+    <path d="M16 50 q10 -22 20 0 t20 0 t20 0 t10 0" stroke="#e8a33d" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M22 44 q10 -20 20 0 t20 0 t18 0" stroke="#f3c25c" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <circle cx="44" cy="40" r="4" fill="#b8392f"/><circle cx="62" cy="38" r="4" fill="#5b8a3c"/>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">Himalayan <b>Cafe</b></a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="flags" aria-hidden="true"><i style="background:#2f6fb5"></i><i style="background:#f4f4f4"></i><i style="background:#b8392f"></i><i style="background:#3f9a56"></i><i style="background:#e8a33d"></i></div>
+      <h1>Warm food from the high hills.</h1>
+      <p>Momo, thukpa and dal bhat cooked fresh every day in Thamel, Kathmandu.</p>
+      <div class="btns">
+        <a class="btn" href="#menu">See our menu</a>
+        <a class="btn ghost" href="#contact">Find us</a>
+      </div>
+    </div>
+    <svg class="mount" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 220 V150 L180 70 L290 130 L470 30 L640 140 L800 80 L960 150 L1080 100 L1200 160 V220Z" fill="#8a6f7a" opacity=".55"/>
+      <path d="M0 220 V180 L150 120 L300 175 L520 90 L700 180 L900 120 L1050 175 L1200 130 V220Z" fill="#16253a"/>
+      <path d="M470 30 L440 64 L470 56 L492 70Z M180 70 L158 92 L180 86 L198 96Z" fill="#fff" opacity=".9"/>
+    </svg>
+  </div>
+
+  <section id="menu">
+    <div class="wrap">
+      <h2>Our menu</h2>
+      <p class="lead">Cooked to order. Tap a category, or tap Order to send your choice on WhatsApp.</p>
+      <div class="tabs" id="tabs" role="group" aria-label="Menu categories"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap split">
+      <div>
+        <h2>About us</h2>
+        <p>Himalayan Cafe began in 2015 as a tea stall with one stove. Today we are a small family restaurant, but we still make the dough, the achar and the masala by hand.</p>
+        <p>Our recipes come from the hills of Solukhumbu and the valleys of Kathmandu. We buy vegetables and meat from nearby farms, and we cook every dish when you order it.</p>
+        <p>Come in as a traveller. Leave as a regular.</p>
+      </div>
+      <div class="stats">
+        <div><strong>10+</strong><span>Years open</span></div>
+        <div><strong>25</strong><span>Dishes</span></div>
+        <div><strong>4.8</strong><span>Guest rating</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap split">
+      <div>
+        <h2>Visit or call us</h2>
+        <p class="lead">Walk in, call, or order on WhatsApp. We reply within minutes.</p>
+        <dl>
+          <div><dt>Address</dt><dd>Thamel Marg, Kathmandu 44600, Nepal<br><a href="https://www.google.com/maps/search/?api=1&query=Thamel+Kathmandu" target="_blank" rel="noopener">Open in Google Maps</a></dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+9779800000000">+977 980-0000000</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:hello@himalayancafe.com">hello@himalayancafe.com</a></dd></div>
+        </dl>
+      </div>
+      <div class="hours">
+        <h3>Opening hours</h3>
+        <ul>
+          <li><span>Sunday – Friday</span><span>8:00 am – 9:00 pm</span></li>
+          <li><span>Saturday</span><span>9:00 am – 10:00 pm</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© <span id="year"></span> Himalayan Cafe, Kathmandu</div></footer>
+
+<a class="wa" id="wa" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#08331a" d="M16 3a13 13 0 0 0-11 19.9L3 29l6.3-2A13 13 0 1 0 16 3z"/><circle cx="10.500" cy="16" r="1.800" fill="#25d366"/><circle cx="16" cy="16" r="1.800" fill="#25d366"/><circle cx="21.500" cy="16" r="1.800" fill="#25d366"/></svg>
+  <span>Order on WhatsApp</span>
+</a>
+
+<script>
+/* ===== आफ्नो जानकारी यहाँ बदल्नुहोस् ===== */
+const WHATSAPP = "9779800000000";   // देश कोड सहित नम्बर। + वा खाली ठाउँ नराख्नुहोस्
+
+/* मेनु: नयाँ खाना थप्न एउटा लाइन copy गरेर बदल्नुहोस्।
+   icon विकल्प: momo, bowl, plate, cup, glass, ring, noodle */
+const MENU = [
+  {cat:"Momo",   icon:"momo",   name:"Chicken momo",  desc:"10 steamed dumplings with tomato achar.", price:200},
+  {cat:"Momo",   icon:"momo",   name:"Buff momo",     desc:"Juicy buffalo meat, the Kathmandu classic.", price:180},
+  {cat:"Momo",   icon:"momo",   name:"Veg momo",      desc:"Cabbage, carrot and paneer filling.", price:160},
+  {cat:"Momo",   icon:"bowl",   name:"Jhol momo",     desc:"Momo in warm sesame and soybean soup.", price:240},
+  {cat:"Mains",  icon:"plate",  name:"Dal bhat set",  desc:"Rice, lentil soup, curry, greens and pickle.", price:350},
+  {cat:"Mains",  icon:"bowl",   name:"Thukpa",        desc:"Hill-style noodle soup with vegetables and chicken.", price:280},
+  {cat:"Mains",  icon:"noodle", name:"Veg chowmein",  desc:"Stir-fried noodles with fresh vegetables.", price:200},
+  {cat:"Drinks", icon:"cup",    name:"Masala chiya",  desc:"Milk tea with ginger and cardamom.", price:50},
+  {cat:"Drinks", icon:"glass",  name:"Sweet lassi",   desc:"Cold yogurt drink, thick and creamy.", price:120},
+  {cat:"Drinks", icon:"cup",    name:"Honey lemon",   desc:"Hot water, lemon and local honey.", price:90},
+  {cat:"Snacks", icon:"ring",   name:"Sel roti",      desc:"Two rings of sweet rice bread, fried fresh.", price:80},
+  {cat:"Snacks", icon:"plate",  name:"Aloo sandheko", desc:"Spiced potato salad with timur pepper.", price:130}
+];
+const TILE = {Momo:"#fbe9d0", Mains:"#e4ecf4", Drinks:"#e6f0e4", Snacks:"#f6e2dd"};
+
+/* मेनु देखाउने */
+const tabs = document.getElementById("tabs"), grid = document.getElementById("grid");
+const cats = ["All", ...new Set(MENU.map(m => m.cat))];
+const wa = (text) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+
+function show(cat){
+  grid.innerHTML = MENU.map((m, i) => ({m, i})).filter(({m}) => cat === "All" || m.cat === cat).map(({m, i}) => `
+    <article class="card">
+      <div class="pic" style="background:${TILE[m.cat]}"><svg role="img" aria-label="${m.name}"><use href="#i-${m.icon}"/></svg></div>
+      <div class="info">
+        <div class="row"><h3>${m.name}</h3><span class="price">Rs ${m.price}</span></div>
+        <p>${m.desc}</p>
+        <button class="order" data-i="${i}">Order</button>
+      </div>
+    </article>`).join("");
+  tabs.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.cat === cat));
+}
+cats.forEach(c => {
+  const b = document.createElement("button");
+  b.className = "tab"; b.textContent = c; b.dataset.cat = c;
+  b.onclick = () => show(c);
+  tabs.appendChild(b);
+});
+grid.addEventListener("click", e => {
+  const btn = e.target.closest(".order");
+  if(!btn) return;
+  const m = MENU[btn.dataset.i];
+  window.open(wa(`Hello Himalayan Cafe, I would like to order: ${m.name} (Rs ${m.price}).`), "_blank");
+});
+show("All");
+
+/* WhatsApp बटन */
+document.getElementById("wa").href = wa("Hello Himalayan Cafe, I have a question.");
+
+/* मोबाइल मेनु */
+const burger = document.getElementById("burger"), nav = document.getElementById("nav");
+burger.onclick = () => {
+  const open = nav.classList.toggle("open");
+  burger.setAttribute("aria-expanded", open);
+};
+nav.querySelectorAll("a").forEach(a => a.onclick = () => { nav.classList.remove("open"); burger.setAttribute("aria-expanded", false); });
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
